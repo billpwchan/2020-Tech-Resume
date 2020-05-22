@@ -1,9 +1,8 @@
 @charset "utf-8";
 /*======================================
  [ -Main Stylesheet-
-  Theme: Solonick
   Version: 1.0
-  Last change: 10/04/2018 ]
+  Last change: 23/05/2020 ]
 ++ Fonts ++
 ++ General Style ++
 ++ Loader++
@@ -84,7 +83,7 @@ body {
 }
 
 .pin:after {
-	content: "Solonick : ";
+	content: "BILLCHAN. : ";
 	position: absolute;
 	left: -100%;
 	color: rgba(255, 255, 255, 0.51);
