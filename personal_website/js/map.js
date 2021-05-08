@@ -261,7 +261,7 @@
             position: myLatLng,
             map: single_map,
             icon: markerIcon,
-            title: 'Our office  - New York City'
+            title: 'Imperial College London'
         });
     }
     var single_map = document.getElementById('singleMap');

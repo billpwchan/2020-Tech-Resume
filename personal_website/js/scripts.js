@@ -523,7 +523,7 @@ function initSolonick() {
     if ($("#twitts-container").length > 0) {
         var config1 = {
             "profile": {
-                "screenName": 'envatomarket'
+                "screenName": 'billpwchan'
             },
             "domId": 'twitts-container',
             "maxTweets": 2,
@@ -562,7 +562,7 @@ function initSolonick() {
     //   mailchimp------------------
     $("#subscribe").ajaxChimp({
         language: "eng",
-        url: "https://gmail.us1.list-manage.com/subscribe/post?u=1fe818378d5c129b210719d80&amp;id=a2792f681b"
+        url: "http://kwst.us18.list-manage.com/subscribe/post?u=42df802713d4826a4b137cd9e&id=815d11e811"
     });
     $.ajaxChimp.translations.eng = {
         submit: "Submitting...",
