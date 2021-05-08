@@ -1,5 +1,5 @@
 //   all ------------------
-function initSolonick() {
+function initBillChan() {
     "use strict";
     //   loader ------------------
     $(".pin").text("Loading");
@@ -48,7 +48,6 @@ function initSolonick() {
             i = 10 * h;
         $one.css(browserPrefix + "transform", "rotate3d(" + f + ", " + g + ", 0, " + i + "deg)");
     });
-
     function heroAnim() {
         function a(a) {
             var b = a.length,
@@ -199,7 +198,7 @@ function initSolonick() {
         slidesToShow: 1,
         autoplay: true,
         autoplaySpeed: 4000,
-        pauseOnHover: false,
+		pauseOnHover: false,
         arrows: false,
         fade: true,
         cssEase: 'ease-in',
@@ -366,35 +365,35 @@ function initSolonick() {
     sbn.on("click", function () {
         $(this).closest(scw).find(ccsi).slick('slickNext');
     });
-    fpr.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        var
-            direction,
-            slideCountZeroBased = slick.slideCount - 1;
+	fpr.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+		var 
+			direction,
+			slideCountZeroBased = slick.slideCount - 1;
 
-        if (nextSlide == currentSlide) {
-            direction = "same";
+		if (nextSlide == currentSlide) {
+			direction = "same";
 
-        } else if (Math.abs(nextSlide - currentSlide) == 1) {
-            direction = (nextSlide - currentSlide > 0) ? "right" : "left";
+		} else if (Math.abs(nextSlide - currentSlide) == 1) {
+			direction = (nextSlide - currentSlide > 0) ? "right" : "left";
 
-        } else {
-            direction = (nextSlide - currentSlide > 0) ? "left" : "right";
-        }
+		} else {
+			direction = (nextSlide - currentSlide > 0) ? "left" : "right";
+		}
 
-        // Add a temp CSS class for the slide animation (.slick-current-clone-animate)
-        if (direction == 'right') {
-            $('.slick-cloned[data-slick-index="' + (nextSlide + slideCountZeroBased + 1) + '"]', fpr).addClass('slick-current-clone-animate');
-        }
+		// Add a temp CSS class for the slide animation (.slick-current-clone-animate)
+		if (direction == 'right') {
+			$('.slick-cloned[data-slick-index="' + (nextSlide + slideCountZeroBased + 1) + '"]', fpr).addClass('slick-current-clone-animate');
+		}
 
-        if (direction == 'left') {
-            $('.slick-cloned[data-slick-index="' + (nextSlide - slideCountZeroBased - 1) + '"]', fpr).addClass('slick-current-clone-animate');
-        }
-    });
+		if (direction == 'left') {
+			$('.slick-cloned[data-slick-index="' + (nextSlide - slideCountZeroBased - 1) + '"]', fpr).addClass('slick-current-clone-animate');
+		}
+	});
 
-    fpr.on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        $('.slick-current-clone-animate', fpr).removeClass('slick-current-clone-animate');
-        $('.slick-current-clone-animate', fpr).removeClass('slick-current-clone-animate');
-    });
+	fpr.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+		$('.slick-current-clone-animate', fpr).removeClass('slick-current-clone-animate');
+		$('.slick-current-clone-animate', fpr).removeClass('slick-current-clone-animate');
+	});
     //   Isotope------------------
     function n() {
         if ($(".gallery-items").length) {
@@ -427,7 +426,6 @@ function initSolonick() {
         $(".all-album , .num-album").html(b);
     }
     n();
-
     function hoverdirInit() {
         $(".hde  .portfolio_item , .hde .gallery-item").each(function () {
             $(this).hoverdir();
@@ -562,7 +560,7 @@ function initSolonick() {
     });
     $('.chosen-select').selectbox();
     //   mailchimp------------------
-    $("#subscribe").ajaxChimp({});
+
     $.ajaxChimp.translations.eng = {
         submit: "Submitting...",
         0: '<i class="fa fa-check"></i> We will be in touch soon!',
@@ -572,7 +570,6 @@ function initSolonick() {
         4: '<i class="fa fa-warning"></i> E-mail address is not valid.',
         5: '<i class="fa fa-warning"></i> E-mail address is not valid.'
     };
-
     function videoint() {
         //   Video------------------
         var v = $(".background-youtube-wrapper").data("vid");
@@ -631,7 +628,6 @@ function initSolonick() {
     });
     var shrcn = $(".share-wrapper"),
         ssb = $(".showshare");
-
     function showShare() {
         hideMenu();
         shrcn.fadeIn(1).removeClass("isShare").addClass("invis-share");
@@ -647,7 +643,6 @@ function initSolonick() {
 
         }, 300);
     }
-
     function hideShare() {
         shrcn.fadeOut(400).addClass("isShare").removeClass("invis-share");
         $(".soa").removeClass("soavis");
@@ -668,7 +663,6 @@ function initSolonick() {
     var nbw = $(".nav-button"),
         nhw = $(".nav-holder"),
         nho = $(".nav-overlay");
-
     function showMenu() {
         hideShare();
         nho.fadeIn(500);
@@ -685,7 +679,6 @@ function initSolonick() {
             $(".nav-title span").shuffleLetters({});
         }, 300);
     }
-
     function hideMenu() {
         nhw.animate({
             left: "-1064px",
@@ -748,7 +741,7 @@ function initSolonick() {
     }
     csselem();
     var $window = $(window);
-    $window.on("resize", function () {
+    $window.on("resize", function() {
         csselem();
     });
     // Counter ------------------
@@ -798,10 +791,7 @@ function initSolonick() {
         $(this).parent(".blog-btn-filter").find("ul").slideToggle(500);
         return false;
     });
-    $('.hero-decor-let').rotaterator({
-        fadeSpeed: 500,
-        pauseSpeed: 1200
-    });
+    $('.hero-decor-let').rotaterator({fadeSpeed:500, pauseSpeed:1200});
 }
 //   Parallax ------------------
 function initparallax() {
@@ -833,29 +823,29 @@ function initparallax() {
     }
     if (trueMobile) $(".bgvid , .background-vimeo , .background-youtube-wrapper ").remove();
 }
-//   instagram ------------------	
-var actoket = $('#insta-content').data("instatoken");
-var token = actoket,
-    num_photos = 6;
-$.ajax({
-    url: 'https://api.instagram.com/v1/users/self/media/recent',
-    dataType: 'jsonp',
-    type: 'GET',
-    data: {
-        access_token: token,
-        count: num_photos
-    },
-    success: function (data) {
-        for (x in data.data) {
-            $('#insta-content').append('<a target="_blank" href="' + data.data[x].link + '"><img src="' + data.data[x].images.low_resolution.url + '"></a>');
+    //   instagram ------------------	
+    var actoket = $('#insta-content').data("instatoken");
+    var token = actoket,
+        num_photos = 6;
+    $.ajax({
+        url: 'https://api.instagram.com/v1/users/self/media/recent',
+        dataType: 'jsonp',
+        type: 'GET',
+        data: {
+            access_token: token,
+            count: num_photos
+        },
+        success: function (data) {
+            for (x in data.data) {
+                $('#insta-content').append('<a target="_blank" href="' + data.data[x].link + '"><img src="' + data.data[x].images.low_resolution.url + '"></a>');
+            }
+        },
+        error: function (data) {
+            console.log(data);
         }
-    },
-    error: function (data) {
-        console.log(data);
-    }
-});
+    });
 //   Init All ------------------
 $(document).ready(function () {
     initparallax();
-    initSolonick();
+    initBillChan();
 });
