@@ -365,6 +365,35 @@ function initSolonick() {
     sbn.on("click", function () {
         $(this).closest(scw).find(ccsi).slick('slickNext');
     });
+	fpr.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+		var 
+			direction,
+			slideCountZeroBased = slick.slideCount - 1;
+
+		if (nextSlide == currentSlide) {
+			direction = "same";
+
+		} else if (Math.abs(nextSlide - currentSlide) == 1) {
+			direction = (nextSlide - currentSlide > 0) ? "right" : "left";
+
+		} else {
+			direction = (nextSlide - currentSlide > 0) ? "left" : "right";
+		}
+
+		// Add a temp CSS class for the slide animation (.slick-current-clone-animate)
+		if (direction == 'right') {
+			$('.slick-cloned[data-slick-index="' + (nextSlide + slideCountZeroBased + 1) + '"]', fpr).addClass('slick-current-clone-animate');
+		}
+
+		if (direction == 'left') {
+			$('.slick-cloned[data-slick-index="' + (nextSlide - slideCountZeroBased - 1) + '"]', fpr).addClass('slick-current-clone-animate');
+		}
+	});
+
+	fpr.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+		$('.slick-current-clone-animate', fpr).removeClass('slick-current-clone-animate');
+		$('.slick-current-clone-animate', fpr).removeClass('slick-current-clone-animate');
+	});
     //   Isotope------------------
     function n() {
         if ($(".gallery-items").length) {
@@ -494,7 +523,7 @@ function initSolonick() {
     if ($("#twitts-container").length > 0) {
         var config1 = {
             "profile": {
-                "screenName": 'billpwchan'
+                "screenName": 'envatomarket'
             },
             "domId": 'twitts-container',
             "maxTweets": 2,
@@ -504,46 +533,46 @@ function initSolonick() {
         twitterFetcher.fetch(config1);
     }
     //   Contact form------------------
-    // $("#contactform").submit(function () {
-    //     var a = $(this).attr("action");
-    //     $("#message").slideUp(750, function () {
-    //         $("#message").hide();
-    //         $("#submit").attr("disabled", "disabled");
-    //         $.post(a, {
-    //             name: $("#name").val(),
-    //             email: $("#email").val(),
-    //             phone: $("#phone").val(),
-    //             subject: $('#subject').val(),
-    //             comments: $("#comments").val(),
-    //             verify: $('#verify').val()
+    $("#contactform").submit(function () {
+        var a = $(this).attr("action");
+        $("#message").slideUp(750, function () {
+            $("#message").hide();
+            $("#submit").attr("disabled", "disabled");
+            $.post(a, {
+                name: $("#name").val(),
+                email: $("#email").val(),
+                phone: $("#phone").val(),
+                subject: $('#subject').val(),
+                comments: $("#comments").val(),
+                verify: $('#verify').val()
 
-    //         }, function (a) {
-    //             document.getElementById("message").innerHTML = a;
-    //             $("#message").slideDown("slow");
-    //             $("#submit").removeAttr("disabled");
-    //             if (null != a.match("success")) $("#contactform").slideDown("slow");
-    //         });
-    //     });
-    //     return false;
-    // });
+            }, function (a) {
+                document.getElementById("message").innerHTML = a;
+                $("#message").slideDown("slow");
+                $("#submit").removeAttr("disabled");
+                if (null != a.match("success")) $("#contactform").slideDown("slow");
+            });
+        });
+        return false;
+    });
     $("#contactform input, #contactform textarea").keyup(function () {
         $("#message").slideUp(1500);
     });
     $('.chosen-select').selectbox();
     //   mailchimp------------------
-    // $("#subscribe").ajaxChimp({
-    //     language: "eng",
-    //     url: "http://kwst.us18.list-manage.com/subscribe/post?u=42df802713d4826a4b137cd9e&id=815d11e811"
-    // });
-    // $.ajaxChimp.translations.eng = {
-    //     submit: "Submitting...",
-    //     0: '<i class="fa fa-check"></i> We will be in touch soon!',
-    //     1: '<i class="fa fa-warning"></i> You must enter a valid e-mail address.',
-    //     2: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-    //     3: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-    //     4: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-    //     5: '<i class="fa fa-warning"></i> E-mail address is not valid.'
-    // };
+    $("#subscribe").ajaxChimp({
+        language: "eng",
+        url: "https://gmail.us1.list-manage.com/subscribe/post?u=1fe818378d5c129b210719d80&amp;id=a2792f681b"
+    });
+    $.ajaxChimp.translations.eng = {
+        submit: "Submitting...",
+        0: '<i class="fa fa-check"></i> We will be in touch soon!',
+        1: '<i class="fa fa-warning"></i> You must enter a valid e-mail address.',
+        2: '<i class="fa fa-warning"></i> E-mail address is not valid.',
+        3: '<i class="fa fa-warning"></i> E-mail address is not valid.',
+        4: '<i class="fa fa-warning"></i> E-mail address is not valid.',
+        5: '<i class="fa fa-warning"></i> E-mail address is not valid.'
+    };
     function videoint() {
         //   Video------------------
         var v = $(".background-youtube-wrapper").data("vid");
@@ -565,7 +594,7 @@ function initSolonick() {
         bvc.append('<iframe src="//player.vimeo.com/video/' + w + '?background=1"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe>');
         $(".video-holder").height(bvmc.height());
         if ($(window).width() > 1024) {
-            if ($(".video-holder").size() > 0)
+            if ($(".video-holder").length > 0)
                 if (bvmc.height() / 9 * 16 > bvmc.width()) {
                     bvfc.height(bvmc.height()).width(bvmc.height() / 9 * 16);
                     bvfc.css({
@@ -715,7 +744,7 @@ function initSolonick() {
     }
     csselem();
     var $window = $(window);
-    $window.resize(function () {
+    $window.on("resize", function() {
         csselem();
     });
     // Counter ------------------
@@ -819,7 +848,7 @@ function initparallax() {
         }
     });
 //   Init All ------------------
-$(function () {
+$(document).ready(function () {
     initparallax();
     initSolonick();
 });
